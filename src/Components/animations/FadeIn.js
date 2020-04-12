@@ -1,12 +1,12 @@
 import React from 'react';
 import { MDBAnimation } from 'mdbreact';
 
-const InfiniteBounce = (props) => {
+const FadeIN = (props) => {
   return (
-    <MDBAnimation type='bounce' infinite>
+    <MDBAnimation type='fadeIn' duration='1s'>
       {props.children}
     </MDBAnimation>
   );
 };
 
-export default InfiniteBounce;
+export default FadeIN;
