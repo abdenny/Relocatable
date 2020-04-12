@@ -1,15 +1,15 @@
 import React from 'react';
-import Footer from './Footer';
+// import Footer from './Footer';
 import Header from './Header';
-
+import './baselayout.css';
 const BaseLayout = (props) => {
   return (
     <>
       <Header />
-      <br />
+
       {props.children}
-      <br />
-      <Footer />
+
+      {/* <Footer /> */}
     </>
   );
 };
