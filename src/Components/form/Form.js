@@ -4,6 +4,8 @@ import CityInput from './CityInput';
 import CityOutput from './CityOutput';
 import SalaryInput from './SalaryInput';
 import FormButton from './FormButton';
+import { connect } from 'react-redux';
+import { testCaseAdd } from '../../Actions/actionTemplate';
 
 const CITIES = require('../../data/cities');
 
@@ -19,6 +21,7 @@ class Form extends React.Component {
     super(props);
 
     this.state = {
+      obj: null,
       selectedOption: null,
       selectedOptionTwo: null,
       salaryInput: null,
@@ -44,37 +47,62 @@ class Form extends React.Component {
     });
   };
 
+  handleFinalChange = (e) => {
+    this.setState(
+      {
+        obj: {
+          city1: this.state.selectedOption,
+          city2: this.state.selectedOptionTwo,
+          salary: this.state.salaryInput,
+        },
+      },
+      () => {
+        this.props.testCaseAdd(this.state.obj);
+      }
+    );
+  };
+
   render() {
     console.log(this.state);
     return (
       <MDBContainer>
         <MDBRow>
           <MDBCol md='12'>
-            <form>
-              {this.state.selectedOption == null && (
-                <CityInput
+            {this.state.selectedOption == null && (
+              <CityInput
+                listOfCities={this.state.listOfCities}
+                selectedOption={this.state.selectedOption}
+                handleInputChange={this.handleInputChange}
+              />
+            )}
+            {this.state.selectedOption !== null &&
+              this.state.selectedOptionTwo == null && (
+                <CityOutput
                   listOfCities={this.state.listOfCities}
-                  selectedOption={this.state.selectedOption}
-                  handleInputChange={this.handleInputChange}
+                  selectedOption={this.state.selectedOptionTwo}
+                  handleInputChange={this.handleOutputChange}
                 />
               )}
-              {this.state.selectedOption !== null &&
-                this.state.selectedOptionTwo == null && (
-                  <CityOutput
-                    listOfCities={this.state.listOfCities}
-                    selectedOption={this.state.selectedOptionTwo}
-                    handleInputChange={this.handleOutputChange}
-                  />
-                )}
-              {this.state.selectedOptionTwo !== null && (
-                <SalaryInput handleInputChange={this.handleSalaryChange} />
-              )}
-              {this.state.salaryInput !== null && <FormButton />}
-            </form>
+            {this.state.selectedOptionTwo !== null && (
+              <SalaryInput handleInputChange={this.handleSalaryChange} />
+            )}
+            {this.state.salaryInput !== null && (
+              <FormButton buttonProp={this.handleFinalChange} />
+            )}
           </MDBCol>
         </MDBRow>
       </MDBContainer>
     );
   }
 }
-export default Form;
+let mapStateToProps = (state) => {
+  return {
+    tempSomeArray: state.template.someArray,
+  };
+};
+let mapDispatchToProps = (dispatch) => {
+  return {
+    testCaseAdd: (dataObj) => dispatch(testCaseAdd(dataObj)),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Form);
