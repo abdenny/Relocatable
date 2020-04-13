@@ -6,6 +6,7 @@ import SalaryInput from './SalaryInput';
 import FormButton from './FormButton';
 import { connect } from 'react-redux';
 import { testCaseAdd } from '../../Actions/actionTemplate';
+import { Redirect } from 'react-router-dom';
 
 const CITIES = require('../../data/cities');
 
@@ -83,12 +84,14 @@ class Form extends React.Component {
                   handleInputChange={this.handleOutputChange}
                 />
               )}
-            {this.state.selectedOptionTwo !== null && (
-              <SalaryInput handleInputChange={this.handleSalaryChange} />
-            )}
-            {this.state.salaryInput !== null && (
+            {this.state.selectedOptionTwo !== null &&
+              this.state.obj === null && (
+                <SalaryInput handleInputChange={this.handleSalaryChange} />
+              )}
+            {this.state.salaryInput !== null && this.state.obj === null && (
               <FormButton buttonProp={this.handleFinalChange} />
             )}
+            {this.state.obj !== null && <Redirect to='/view' />}
           </MDBCol>
         </MDBRow>
       </MDBContainer>
