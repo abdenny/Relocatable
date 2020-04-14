@@ -48,13 +48,13 @@ class CityCarousel extends React.Component {
       });
   };
   render() {
-    console.log(this.state.cityImage1);
-    console.log(this.props);
+    // console.log(this.state.cityImage1);
+    // console.log(this.props);
     return (
       <FadeInUp>
-        <MDBContainer style={{ paddingTop: '1rem' }}>
+        <MDBContainer style={{ paddingTop: '1rem', paddingBottom: '1rem' }}>
           <MDBCarousel
-            style={{ height: '250px' }}
+            style={{ height: '200px' }}
             activeItem={1}
             length={2}
             showControls={true}

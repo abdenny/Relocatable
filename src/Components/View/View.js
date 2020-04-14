@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import Spinner from '../animations/Spinner';
 import CityCarousel from './CityCarousel';
-
+import findAverage from '../../functions/average';
 import store from '../Store';
 import apiKey from '../keys';
+import PriceObject from './PriceObject';
+import AboutPill from './AboutPill';
 
 class View extends Component {
   constructor(props) {
@@ -51,6 +53,44 @@ class View extends Component {
                 this.setState({
                   data2: data2,
                 });
+              })
+              .then(() => {
+                this.setState({
+                  city1Rest: findAverage(
+                    this.state.data1.prices,
+                    'Restaurants'
+                  ),
+                  city2Rest: findAverage(
+                    this.state.data2.prices,
+                    'Restaurants'
+                  ),
+                  city1Grocery: findAverage(this.state.data1.prices, 'Markets'),
+                  city2Grocery: findAverage(this.state.data2.prices, 'Markets'),
+                  city1Transportation: findAverage(
+                    this.state.data1.prices,
+                    'Transportation'
+                  ),
+                  city2Transportation: findAverage(
+                    this.state.data2.prices,
+                    'Transportation'
+                  ),
+                  city1Salaries: findAverage(
+                    this.state.data1.prices,
+                    'Salaries'
+                  ),
+                  city2Salaries: findAverage(
+                    this.state.data2.prices,
+                    'Salaries'
+                  ),
+                  city1Apartment: findAverage(
+                    this.state.data1.prices,
+                    'Apartment'
+                  ),
+                  city2Apartment: findAverage(
+                    this.state.data2.prices,
+                    'Apartment'
+                  ),
+                });
               });
           });
       }
@@ -58,18 +98,16 @@ class View extends Component {
   };
 
   render() {
-    // console.log(this.state.data1);
-    // console.log(this.state.data2);
     console.log(this.state);
+
     return (
       <>
         {this.state.data2 == null && <Spinner />}
         {this.state.data2 !== null && (
-          <CityCarousel
-            city1Name={this.state.city1}
-            city2Name={this.state.city2}
-          />
+          <CityCarousel city1Name={this.state.city1} />
         )}
+        <AboutPill city1Name={this.state.city1} city2Name={this.state.city2} />
+        <PriceObject />
       </>
     );
   }
