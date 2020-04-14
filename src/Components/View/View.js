@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Spinner from '../animations/Spinner';
+import CityCarousel from './CityCarousel';
 
 import store from '../Store';
 import apiKey from '../keys';
@@ -39,9 +40,9 @@ class View extends Component {
           })
           .then(() => {
             fetch(
-              `https://cost-of-living-api-lqvgibwbps.now.sh/${
+              `https://www.numbeo.com/api/city_prices?api_key=${apiKey}&query=${
                 this.state.city2.split(',')[0]
-              }?usd`
+              }&currency=USD`
             )
               .then((response) => {
                 return response.json();
@@ -57,12 +58,18 @@ class View extends Component {
   };
 
   render() {
-    console.log(this.state.data1);
-    console.log(this.state.data2);
+    // console.log(this.state.data1);
+    // console.log(this.state.data2);
     console.log(this.state);
     return (
       <>
-        <Spinner />
+        {this.state.data2 == null && <Spinner />}
+        {this.state.data2 !== null && (
+          <CityCarousel
+            city1Name={this.state.city1}
+            city2Name={this.state.city2}
+          />
+        )}
       </>
     );
   }

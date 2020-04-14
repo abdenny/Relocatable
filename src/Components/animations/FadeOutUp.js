@@ -3,7 +3,7 @@ import { MDBAnimation } from 'mdbreact';
 
 const FadeOutUp = (props) => {
   return (
-    <MDBAnimation type='fadeOutUp' duration='1s' delay='1s'>
+    <MDBAnimation type='fadeOutUp' duration='1s'>
       {props.children}
     </MDBAnimation>
   );
