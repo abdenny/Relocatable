@@ -1,5 +1,6 @@
 import React from 'react';
 import { MDBBtn, MDBIcon } from 'mdbreact';
+
 import FadeIn from '../animations/FadeIn';
 
 class FormButton extends React.Component {
