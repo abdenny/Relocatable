@@ -48,8 +48,6 @@ class CityCarousel extends React.Component {
       });
   };
   render() {
-    // console.log(this.state.cityImage1);
-    // console.log(this.props);
     return (
       <FadeInUp>
         <MDBContainer style={{ paddingTop: '1rem', paddingBottom: '1rem' }}>

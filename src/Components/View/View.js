@@ -6,6 +6,9 @@ import store from '../Store';
 import apiKey from '../keys';
 import PriceObject from './PriceObject';
 import AboutPill from './AboutPill';
+import sumArrayandRed from '../../functions/sumArrayandRed';
+import whichArrayIsLarger from '../../functions/whichArrayIsLarger';
+import averageDiffs from '../../functions/averageDiffs';
 
 class View extends Component {
   constructor(props) {
@@ -91,6 +94,49 @@ class View extends Component {
                     'Apartment'
                   ),
                 });
+              })
+              .then(() => {
+                this.setState({
+                  moreExpensiveCity: whichArrayIsLarger(
+                    this.state.city1Apartment,
+                    this.state.city2Apartment
+                  ),
+                  restaurantDiff: sumArrayandRed(
+                    this.state.city1Rest,
+                    this.state.city2Rest
+                  ),
+                  groceryDiff: sumArrayandRed(
+                    this.state.city1Grocery,
+                    this.state.city2Grocery
+                  ),
+                  transportationDiff: sumArrayandRed(
+                    this.state.city1Transportation,
+                    this.state.city2Transportation
+                  ),
+                  salaryDiff: sumArrayandRed(
+                    this.state.city1Salaries,
+                    this.state.city2Salaries
+                  ),
+                  apartmentDiff: sumArrayandRed(
+                    this.state.city1Apartment,
+                    this.state.city2Apartment
+                  ),
+                });
+                // console.log(
+                //   sumArrayandRed(this.state.city1Rest, this.state.city2Rest),
+                //   whichArrayIsLarger(this.state.city1Apartment, this.state.city2Apartment)
+                // );
+              })
+              .then(() => {
+                this.setState({
+                  totalDiff: averageDiffs(
+                    this.state.restaurantDiff,
+                    this.state.groceryDiff,
+                    this.state.transportationDiff,
+                    this.state.salaryDiff,
+                    this.state.apartmentDiff
+                  ),
+                });
               });
           });
       }
@@ -99,14 +145,20 @@ class View extends Component {
 
   render() {
     console.log(this.state);
-
     return (
       <>
         {this.state.data2 == null && <Spinner />}
         {this.state.data2 !== null && (
-          <CityCarousel city1Name={this.state.city1} />
+          <CityCarousel
+            city1Name={this.state.city1}
+            city2Name={this.state.city2}
+          />
         )}
-        <AboutPill city1Name={this.state.city1} city2Name={this.state.city2} />
+        <AboutPill
+          parentState={this.state}
+          city1Name={this.state.city1}
+          city2Name={this.state.city2}
+        />
         <PriceObject />
       </>
     );

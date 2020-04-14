@@ -29,11 +29,12 @@ class AboutPill extends Component {
   };
 
   render() {
+    // console.log(this.props);
+
     return (
       <MDBContainer className='mt-4'>
         <MDBRow>
           <MDBCol md='12'>
-            <h2>Default</h2>
             <MDBNav className='mt-5 nav-pills'>
               <MDBNavItem>
                 <MDBNavLink
