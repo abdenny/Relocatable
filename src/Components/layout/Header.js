@@ -30,11 +30,16 @@ class Header extends Component {
           <MDBNavbarToggler onClick={this.toggleCollapse} />
           <MDBCollapse id='navbarCollapse3' isOpen={this.state.isOpen} navbar>
             <MDBNavbarNav left>
-              <MDBNavItem active>
-                <MDBNavLink to='/'>Home</MDBNavLink>
+              <MDBNavItem active style={{ marginRight: '20px' }}>
+                <a href='/'>
+                  <div className='white-text'> Home</div>
+                </a>
               </MDBNavItem>
+
               <MDBNavItem>
-                <MDBNavLink to='/about'>About</MDBNavLink>
+                <a href='/about'>
+                  <div className='white-text'> About</div>
+                </a>
               </MDBNavItem>
             </MDBNavbarNav>
             <MDBNavbarNav right>

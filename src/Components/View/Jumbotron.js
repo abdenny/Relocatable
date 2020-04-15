@@ -48,7 +48,7 @@ class Jumbotron extends React.Component {
                   src={this.state.cityImage2}
                 />
                 <MDBCardBody>
-                  <MDBCardTitle className='h3'>
+                  <MDBCardTitle className='h3 indigo-text'>
                     {this.props.city2Name}
                   </MDBCardTitle>
                   <MDBCardText>
