@@ -56,9 +56,11 @@ class Jumbotron extends React.Component {
                     {this.props.moreExpensiveCity === 'City1'
                       ? this.props.city1Name
                       : this.props.city2Name}{' '}
-                    is about <b>{this.props.totalDiff}</b>% more expensive.
+                    is about <b>{this.props.totalDiff}</b>% more expensive. Your
+                    adjusted salary would be equivalent to ~
+                    <b>${this.props.newSalary}</b>
                   </MDBCardText>
-                  <MDBBtn href='#' gradient='purple' rounded>
+                  <MDBBtn href='#bottom' gradient='aqua' rounded>
                     <MDBIcon icon='arrow-down' className='mr-2' />
                     See Details
                   </MDBBtn>

@@ -37,7 +37,7 @@ class CallToActionIntro extends React.Component {
         <MDBView src='https://mdbootstrap.com/img/Photos/Others/gradient3.png'>
           <MDBMask className='rgba-blue-slight ' />
           <MDBContainer
-            style={{ height: '100%', width: '100%', paddingTop: '10rem' }}
+            style={{ height: '100%', width: '100%', paddingTop: '8rem' }}
             className='d-flex justify-content-center align-items-center'
           >
             <MDBRow>

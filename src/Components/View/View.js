@@ -11,6 +11,8 @@ import PriceObject from './PriceObject';
 import PriceObjectRight from './PriceObjectRight';
 import PriceObjectT from './PriceObjectT';
 import PriceObjectH from './PriceObjectH';
+import salaryCalc from '../../functions/salary';
+import BackButton from './backButton';
 
 class View extends Component {
   constructor(props) {
@@ -135,6 +137,14 @@ class View extends Component {
                     this.state.apartmentDiff
                   ),
                 });
+              })
+              .then(() => {
+                this.setState({
+                  newSalary: salaryCalc(
+                    this.state.salary,
+                    this.state.totalDiff
+                  ),
+                });
               });
           });
       }
@@ -151,6 +161,7 @@ class View extends Component {
             moreExpensiveCity={this.state.moreExpensiveCity}
             city1Name={this.state.city1}
             city2Name={this.state.city2}
+            newSalary={this.state.newSalary}
             totalDiff={this.state.totalDiff}
           />
         )}
@@ -186,6 +197,7 @@ class View extends Component {
             city2Name={this.state.city2}
           />
         )}
+        {this.state.totalDiff !== undefined && <BackButton />}
       </>
     );
   }

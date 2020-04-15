@@ -1,27 +1,65 @@
 import React, { Component } from 'react';
-import { MDBNavbar, MDBNavbarBrand } from 'mdbreact';
+import {
+  MDBNavbar,
+  MDBNavbarBrand,
+  MDBNavbarNav,
+  MDBNavItem,
+  MDBNavLink,
+  MDBNavbarToggler,
+  MDBCollapse,
+  MDBIcon,
+} from 'mdbreact';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 class Header extends Component {
   state = {
-    collapseID: '',
+    isOpen: false,
   };
 
-  toggleCollapse = (collapseID) => () =>
-    this.setState((prevState) => ({
-      collapseID: prevState.collapseID !== collapseID ? collapseID : '',
-    }));
+  toggleCollapse = () => {
+    this.setState({ isOpen: !this.state.isOpen });
+  };
 
   render() {
     return (
-      <MDBNavbar color='unique-color-dark' style={{ marginTop: '0px' }} dark>
-        <MDBNavbarBrand href='/'>
-          <img
-            src='https://mdbootstrap.com/img/logo/mdb-transparent.png'
-            height='30'
-            alt=''
-          />
-        </MDBNavbarBrand>
-      </MDBNavbar>
+      <Router>
+        <MDBNavbar color='indigo' dark expand='md'>
+          <MDBNavbarBrand>
+            <img alt='' width='40px' src='logo192.png'></img>
+          </MDBNavbarBrand>
+          <MDBNavbarToggler onClick={this.toggleCollapse} />
+          <MDBCollapse id='navbarCollapse3' isOpen={this.state.isOpen} navbar>
+            <MDBNavbarNav left>
+              <MDBNavItem active>
+                <MDBNavLink to='/'>Home</MDBNavLink>
+              </MDBNavItem>
+              <MDBNavItem>
+                <MDBNavLink to='/about'>About</MDBNavLink>
+              </MDBNavItem>
+            </MDBNavbarNav>
+            <MDBNavbarNav right>
+              <MDBNavItem>
+                <a
+                  href='https://github.com/abdenny/Relocatable'
+                  target='_blank'
+                  className='nav-link Ripple-parent'
+                >
+                  <MDBIcon size='lg' fab icon='github' />
+                </a>
+              </MDBNavItem>
+              <MDBNavItem>
+                <a
+                  href='https://www.linkedin.com/in/austin-denny-0b77a8197/'
+                  target='_blank'
+                  className='nav-link Ripple-parent'
+                >
+                  <MDBIcon size='lg' fab icon='linkedin' />
+                </a>
+              </MDBNavItem>
+            </MDBNavbarNav>
+          </MDBCollapse>
+        </MDBNavbar>
+      </Router>
     );
   }
 }
