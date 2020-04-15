@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import Spinner from '../animations/Spinner';
-import CityCarousel from './CityCarousel';
 import findAverage from '../../functions/average';
 import store from '../Store';
 import apiKey from '../keys';
-import PriceObject from './PriceObject';
-import AboutPill from './AboutPill';
 import sumArrayandRed from '../../functions/sumArrayandRed';
 import whichArrayIsLarger from '../../functions/whichArrayIsLarger';
 import averageDiffs from '../../functions/averageDiffs';
+import Jumbotron from './Jumbotron';
+import PriceObject from './PriceObject';
+import PriceObjectRight from './PriceObjectRight';
+import PriceObjectT from './PriceObjectT';
+import PriceObjectH from './PriceObjectH';
 
 class View extends Component {
   constructor(props) {
@@ -122,10 +124,6 @@ class View extends Component {
                     this.state.city2Apartment
                   ),
                 });
-                // console.log(
-                //   sumArrayandRed(this.state.city1Rest, this.state.city2Rest),
-                //   whichArrayIsLarger(this.state.city1Apartment, this.state.city2Apartment)
-                // );
               })
               .then(() => {
                 this.setState({
@@ -149,17 +147,45 @@ class View extends Component {
       <>
         {this.state.data2 == null && <Spinner />}
         {this.state.data2 !== null && (
-          <CityCarousel
+          <Jumbotron
+            moreExpensiveCity={this.state.moreExpensiveCity}
+            city1Name={this.state.city1}
+            city2Name={this.state.city2}
+            totalDiff={this.state.totalDiff}
+          />
+        )}
+        {this.state.totalDiff !== undefined && (
+          <PriceObject
+            restaurantDiff={this.state.restaurantDiff}
+            moreExpensiveCity={this.state.moreExpensiveCity}
             city1Name={this.state.city1}
             city2Name={this.state.city2}
           />
         )}
-        <AboutPill
-          parentState={this.state}
-          city1Name={this.state.city1}
-          city2Name={this.state.city2}
-        />
-        <PriceObject />
+        {this.state.totalDiff !== undefined && (
+          <PriceObjectRight
+            groceryDiff={this.state.groceryDiff}
+            moreExpensiveCity={this.state.moreExpensiveCity}
+            city1Name={this.state.city1}
+            city2Name={this.state.city2}
+          />
+        )}
+        {this.state.totalDiff !== undefined && (
+          <PriceObjectT
+            transportationDiff={this.state.transportationDiff}
+            moreExpensiveCity={this.state.moreExpensiveCity}
+            city1Name={this.state.city1}
+            city2Name={this.state.city2}
+          />
+        )}
+        {this.state.totalDiff !== undefined && (
+          <PriceObjectH
+            apartmentDiff={this.state.apartmentDiff}
+            moreExpensiveCity={this.state.moreExpensiveCity}
+            city1Name={this.state.city1}
+            city2Name={this.state.city2}
+          />
+        )}
       </>
     );
   }

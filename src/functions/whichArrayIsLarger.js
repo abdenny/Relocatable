@@ -4,9 +4,9 @@ let whichArrayIsLarger = (array1, array2) => {
   let redArray1 = array1.reduce(add);
   let redArray2 = array2.reduce(add);
   if (redArray1 > redArray2) {
-    return `City1 is more expensive`;
+    return `City1`;
   } else if (redArray1 < redArray2) {
-    return `City2 is more expensive`;
+    return `City2`;
   }
 };
 

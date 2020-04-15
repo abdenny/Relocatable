@@ -6,7 +6,7 @@ const Spinner = () => {
     <>
       <div className='text-center'>
         <MDBIcon
-          style={{ marginTop: '10rem' }}
+          style={{ marginTop: '17rem' }}
           icon='cog'
           pulse
           size='3x'
