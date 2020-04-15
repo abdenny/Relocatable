@@ -1,24 +1,30 @@
 import React from 'react';
-import { MDBMedia } from 'mdbreact';
+import { MDBMedia, MDBIcon } from 'mdbreact';
+import FadeInLefts from '../animations/FadeInLefts';
 
 const PriceObject = (props) => {
   return (
-    <MDBMedia>
-      <MDBMedia left className='mr-3' href='#'>
-        <MDBMedia
-          object
-          src='https://mdbootstrap.com/img/Photos/Others/placeholder1.jpg'
-          alt=''
-        />
+    <FadeInLefts>
+      <MDBMedia
+        className='text-center'
+        id='bottom'
+        style={{ paddingBottom: '6rem' }}
+      >
+        <MDBMedia body>
+          <MDBIcon
+            icon='utensils'
+            size='3x'
+            className='indigo-text pr-3 ml-3'
+          />
+          <MDBMedia heading>Restaurants</MDBMedia>
+          Restaurants in{' '}
+          {props.moreExpensiveCity === 'City1'
+            ? props.city1Name
+            : props.city2Name}{' '}
+          are <b>{props.restaurantDiff.toFixed(2)}</b>% more expensive
+        </MDBMedia>
       </MDBMedia>
-      <MDBMedia body>
-        <MDBMedia heading>Media heading</MDBMedia>
-        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque
-        ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus
-        viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.
-        Donec lacinia congue felis in faucibus.
-      </MDBMedia>
-    </MDBMedia>
+    </FadeInLefts>
   );
 };
 

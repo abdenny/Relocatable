@@ -8,7 +8,7 @@ class FormButton extends React.Component {
     return (
       <FadeIn>
         <div className='text-center'>
-          <MDBBtn color='primary' onClick={this.props.buttonProp}>
+          <MDBBtn gradient='aqua' onClick={this.props.buttonProp}>
             <MDBIcon icon='arrow-right' className='mr-2' />
             Next
           </MDBBtn>

@@ -1,12 +1,12 @@
 import React from 'react';
 import { MDBAnimation } from 'mdbreact';
 
-const fadeInRight = (props) => {
+const fadeInLeft = (props) => {
   return (
-    <MDBAnimation reveal type='fadeInRight'>
+    <MDBAnimation reveal type='fadeInLeft'>
       {props.children}
     </MDBAnimation>
   );
 };
 
-export default fadeInRight;
+export default fadeInLeft;
