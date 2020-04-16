@@ -41,10 +41,10 @@ class Jumbotron extends React.Component {
       <FadeInUp>
         <MDBContainer className='mt-3 text-center'>
           <MDBRow>
-            <MDBCol>
-              <MDBJumbotron className='p-0'>
+            <MDBCol className=' d-flex justify-content-center align-items-center'>
+              <MDBJumbotron className='p-0 '>
                 <MDBCardImage
-                  className='img-fluid'
+                  className='img-fluid '
                   src={this.state.cityImage2}
                 />
                 <MDBCardBody>
