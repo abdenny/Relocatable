@@ -54,7 +54,7 @@ class CallToActionIntro extends React.Component {
                   <MDBIcon icon='angle-double-right' className='mr-2' /> Get
                   Started
                 </MDBBtn>
-                <MDBBtn outline color='indigo' rounded>
+                <MDBBtn href='/about' outline color='indigo' rounded>
                   <MDBIcon icon='book' className='mr-2' /> About
                 </MDBBtn>
               </MDBCol>
