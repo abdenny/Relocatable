@@ -13,6 +13,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import BaseLayout from './Components/layout/BaseLayout';
 import Form from './Components/form/Form';
 import View from './Components/View/View';
+import About from './Components/about/About';
 
 ReactDOM.render(
   <Provider store={store}>
@@ -22,6 +23,7 @@ ReactDOM.render(
           <Route exact path='/' component={App} />
           <Route exact path='/form' component={Form} />
           <Route exact path='/view' component={View} />
+          <Route exact path='/about' component={About} />
         </Switch>
       </BaseLayout>
     </BrowserRouter>
